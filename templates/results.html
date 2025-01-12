@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #6dd5fa, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #4c9be8;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+            border-bottom: 2px solid #6dd5fa;
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: 400;
+        }
+        .explanations {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .explanation-item {
+            background: #f4f8fc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 5px solid #4c9be8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .explanation-item strong {
+            color: #4c9be8;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Based Outfit Recommendations</h1>
+        <h2>Weather for {{ city }}</h2>
+        <p><strong>Temperature:</strong> {{ weather_data['main']['temp'] }}°C</p>
+        <p><strong>Feels Like:</strong> {{ weather_data['main']['feels_like'] }}°C</p>
+        <p><strong>Description:</strong> {{ weather_data['weather'][0]['description'] }}</p>
+        <p><strong>Wind Speed:</strong> {{ weather_data['wind']['speed'] }}m/s</p>
+        <p><strong>Humidity:</strong> {{ weather_data['main']['humidity'] }}%</p>
+
+        <h2>Outfit Recommendations:</h2>
+        <ul>
+            {% for item in recommendations %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Explanations:</h2>
+        <div class="explanations">
+            {% for item, explanation in explanations.items() %}
+            <div class="explanation-item">
+                <strong>{{ item }}</strong>
+                <span>{{ explanation }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

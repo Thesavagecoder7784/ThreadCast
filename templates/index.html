@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Outfit Recommender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #6dd5fa, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #6dd5fa;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4c9be8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather-Based Outfit Recommender</h1>
+        <form action="/recommend" method="post">
+            <input type="text" name="city" placeholder="Enter City Name" required>
+            <select name="style" required>
+                <option value="" disabled selected>Select Style</option>
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="sporty">Sporty</option>
+            </select>
+            <select name="environment" required>
+                <option value="" disabled selected>Select Environment</option>
+                <option value="inside">Inside</option>
+                <option value="outside">Outside</option>
+                <option value="in transit">In Transit</option>
+            </select>
+            <select name="event" required>
+                <option value="" disabled selected>Select Event</option>
+                <option value="general">General</option>
+                <option value="walking">Walking</option>
+                <option value="business_meeting">Business Meeting</option>
+                <option value="party">Party</option>
+            </select>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>
